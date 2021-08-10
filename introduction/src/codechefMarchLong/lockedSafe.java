@@ -1,0 +1,81 @@
+package codechefMarchLong;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.StringTokenizer;
+
+public class lockedSafe {
+
+	
+	
+	
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		FastScanner sc = new FastScanner();
+        int t= sc.nextInt();
+        for(int tt = 0;tt< t;tt++) {
+            int n = sc.nextInt();
+            long arr[] = new long[n];
+            for(int i =0;i<n;i++) {
+                arr[i] = sc.nextLong();
+            }
+            long ans  = (n * (n+1) )/ 2;
+            int count = 0;
+            for(int i = 1;i<n;i++) {
+                if(arr[i] == arr[i-1]) {
+                    count ++;
+                    ans -= count;
+                } else {
+                    count = 0;
+                }
+            }
+            System.out.println(ans);
+        }       
+		
+	}
+	static long gcd(long a, long b) {
+		if (b==0) return a;
+		return gcd(b, a%b);
+	}
+ 
+	static void ruffleSort(int[] a) {
+		int n=a.length;
+		Random r=new Random();
+		for (int i=0; i<a.length; i++) {
+			int oi=r.nextInt(n); long temp=a[i];
+			a[i]=a[oi];
+			a[oi]=(int) temp;
+		}
+		Arrays.sort(a);
+	}
+	
+	static class FastScanner {
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st=new StringTokenizer("");
+		String next() {
+			while (!st.hasMoreTokens())
+				try {
+					st=new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			return st.nextToken();
+		}
+		
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+		int[] readArray(int n) {
+			int[] a=new int[n];
+			for (int i=0; i<n; i++) a[i]=nextInt();
+			return a;
+		}
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+	}
+
+}

@@ -1,0 +1,27 @@
+package vectorAndStack;
+
+import lists.MyLinkedList;
+
+public class MyStack<E> {
+	
+	private MyLinkedList<E> ll = new MyLinkedList();
+	
+
+	void push(E e) {
+		ll.add(e);
+	}
+	E pop() throws Exception {
+		if(ll.isEmpty()) {
+			throw new Exception("Popping from empty list is not allowed");
+		}
+		return ll.removeLast();
+
+	}
+	E peek() throws Exception{
+		if(ll.isEmpty()) {
+			throw new Exception("Peeking from empty stack is not Allowed");
+		}
+		return ll.getLast();
+	}
+	
+}
